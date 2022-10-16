@@ -31,7 +31,7 @@ map Q gq
 let g:WhichKeyDesc_reload_vimrc = "<leader>si Reload config"
 let g:WhichKey_ShowVimActions = "true"
 "" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+"map \b <Action>(ToggleLineBreakpoint
 
 """ Editing and Reloading the Config
 set clipboard+=unnamed
@@ -63,16 +63,23 @@ nnoremap <Leader>q :action CloseContent<CR>
 nnoremap <Leader>qa :action CloseAllEditors<CR>
 """ Editing source code
 set ideajoin
-set idearefactormode=keepvnoremap < <gv
-vnoremap > >gvnnoremap [[ :action MethodUp<CR>
-nnoremap ]] :action MethodDown<CR>nnoremap zc :action CollapseRegion<CR>
+set idearefactormode=keepv
+noremap < <gvv
+noremap > >gvn
+noremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 nnoremap <leader>zc :action CollapseAllRegions<CR>
-nnoremap <leader>zo :action ExpandAllRegions<CR>nnoremap <leader>c :action CommentByLineComment<CR>nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+nnoremap <leader>c :action CommentByLineComment<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 nnoremap <Leader>=  :action ReformatCode<CR>
-nnoremap <leader>o :action OptimizeImports<CR>nnoremap <c-r> :action RecentFiles<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <c-r> :action RecentFiles<CR>
 nnoremap <leader>l :action RecentLocations<CR>
-nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>nnoremap ge :action GotoNextError<CR>
+nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
+nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>nnoremap <leader>s :write<CR>
 """ Searching and Source Code Navigation
 set incsearch
@@ -99,7 +106,9 @@ nnoremap ,r :action ContextRun<CR>
 nnoremap ,c :action RunClass<CR>
 nnoremap ,f :action ChooseRunConfiguration<CR>
 nnoremap ,t :action ActivateRunToolWindow<CR>
-nnoremap ,u :action Rerun<CR>nnoremap ,f :action RerunFailedTests<CR>nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,f :action RerunFailedTests<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
 nnoremap ,d :action ContextDebug<CR>
 nnoremap ,n :action ActivateDebugToolWindow<CR>
 
@@ -109,3 +118,6 @@ set timeoutlen=5000
 set notimeout
 
 nnoremap <leader>si :source ~/.ideavimrc<CR>
+
+map <Leader>lb :action Tool_External Tools_Black<CR>
+map <Leader>li :action Tool_External Tools_Isort<CR>
