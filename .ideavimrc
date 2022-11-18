@@ -31,7 +31,7 @@ map Q gq
 let g:WhichKeyDesc_reload_vimrc = "<leader>si Reload config"
 let g:WhichKey_ShowVimActions = "true"
 "" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint
+"map \b <Action>(ToggleLineBreakpoint)
 
 """ Editing and Reloading the Config
 set clipboard+=unnamed
@@ -43,13 +43,18 @@ map <C-c> <Esc>
 let mapleader=" "
 """ Distraction Free Mode
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
-nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>wt :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>wr :action ActivateRunToolWindow<CR>
+nnoremap <leader>wd :action ActivateDebugToolWindow<CR>
+nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
+
 nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 """ Navigation
 nnoremap <c-\> :action SplitVertically<CR>
 nnoremap <c--> :action SplitHorizontally<CR>
 nnoremap <c-=> :action Unsplit<CR>
-nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>sethandler <c-j> a:vim
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+sethandler <c-j> a:vim
 sethandler <c-k> a:vim
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
@@ -63,10 +68,11 @@ nnoremap <Leader>q :action CloseContent<CR>
 nnoremap <Leader>qa :action CloseAllEditors<CR>
 """ Editing source code
 set ideajoin
-set idearefactormode=keepv
-noremap < <gvv
-noremap > >gvn
-noremap [[ :action MethodUp<CR>
+set idearefactormode=keep
+vnoremap < <gv
+vnoremap > >gv
+vnoremap <Leader>c :action CommentByLineComment<CR>
+nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
@@ -80,13 +86,15 @@ nnoremap <c-r> :action RecentFiles<CR>
 nnoremap <leader>l :action RecentLocations<CR>
 nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
 nnoremap ge :action GotoNextError<CR>
-nnoremap gE :action GotoPreviousError<CR>nnoremap <leader>s :write<CR>
+nnoremap gE :action GotoPreviousError<CR
+>nnoremap <leader>s :write<CR>
 """ Searching and Source Code Navigation
 set incsearch
 noremap <c-/> :action FindInPath<CR>
 nnoremap <c-a> :action GotoAction<CR>
 nnoremap <c-f> :action GotoFile<CR>
-nnoremap <leader>u :action FindUsages<CR>nnoremap <leader>s :action GotoRelated<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>s :action GotoRelated<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <leader>b :action ShowNavBar<CR>
 nnoremap <c-s> :action FileStructurePopup<CR>
@@ -118,6 +126,3 @@ set timeoutlen=5000
 set notimeout
 
 nnoremap <leader>si :source ~/.ideavimrc<CR>
-
-map <Leader>lb :action Tool_External Tools_Black<CR>
-map <Leader>li :action Tool_External Tools_Isort<CR>
