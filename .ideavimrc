@@ -6,9 +6,9 @@ let mapleader = ' '
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5:
 
-set nerdtree
+set NERDTree
 " do incremental searching.
-remap  q :action closecontent
+remap  q :action CloseContent
 
 set incsearch
 set hlsearch
@@ -17,108 +17,109 @@ set smartcase
 set showmode
 set history=1000
 set surround
-g
+
 " don't use ex mode, use q for formatting.
-map q gq
 
 :set relativenumber
 :set number
-"" -- map ide actions to ideavim -- https://jb.gg/abva4t
-"" map \r to the reformat code action
-"map \r <action>(reformatcode)
 
-"" map <leader>d to start debug
-"map <leader>d <action>(debug)
-let g:whichkeydesc_reload_vimrc = "<leader>si reload config"
-let g:whichkey_showvimactions = "true"
+let g:WhichKeyDesc_reload_vimrc = "<leader>si Reload config"
+let g:WhichKey_ShowVimActions = "true"
+
 "" map \b to toggle the breakpoint on the current line
-map \b <action>(togglelinebreakpoint)
+map \b <action>(ToggleLineBreakpoint)
 
 """ editing and reloading the config
 set clipboard+=unnamed
 set clipboard+=ideaput
-nnoremap \e :e ~/.ideavimrc<cr>
-nnoremap \r :action ideavim.reloadvimrc.reload<cr>
 
-map <c-c> <esc>
-let mapleader=" "
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+map <C-c> <ESC>
+
 """ distraction free mode
-nnoremap <c-z> :action toggledistractionfreemode<cr>
-nnoremap <leader>wt :action activateterminaltoolwindow<cr>
-nnoremap <leader>wr :action activateruntoolwindow<cr>
-nnoremap <leader>wd :action activatedebugtoolwindow<cr>
-nnoremap <leader>wp :action activateprojecttoolwindow<cr>
-nnoremap <leader>t :action terminal.openinterminal<cr>
-""" navigation
-nnoremap <c-\> :action splitvertically<cr>
-nnoremap <c--> :action splithorizontally<cr>
-nnoremap <c-=> :action unsplit<cr>
-nnoremap <c-m> :action moveeditortooppositetabgroup<cr>
+""" Distraction Free Mode
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+nnoremap <leader>wt :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>wr :action ActivateRunToolWindow<CR>
+nnoremap <leader>wd :action ActivateDebugToolWindow<CR>
+nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+""" Navigation
+nnoremap <c-\> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+nnoremap <c-=> :action Unsplit<CR>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+
 sethandler <c-j> a:vim
 sethandler <c-k> a:vim
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
-nnoremap <tab> :action previoustab<cr>
-nnoremap <s-tab> :action nexttab<cr>
-nnoremap <leader>en :action editsourceinnewwindow<cr>
-nnoremap <leader>n :action nextwindow<cr>
-nnoremap <leader>q :action closecontent<cr>
-nnoremap <leader>qa :action closealleditors<cr>
-""" editing source code
+
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <Leader>en :action EditSourceInNewWindow<CR>
+nnoremap <Leader>n :action NextWindow<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>qa :action CloseAllEditors<CR>
+""" Editing source code
 set ideajoin
 set idearefactormode=keep
 vnoremap < <gv
 vnoremap > >gv
-vnoremap <leader>c :action commentbylinecomment<cr>
-noremap [[ :action methodup<cr>
-nnoremap ]] :action methoddown<cr>
-nnoremap zc :action collapseregion<cr>
-nnoremap zo :action expandregion<cr>
-nnoremap <leader>zc :action collapseallregions<cr>
-nnoremap <leader>zo :action expandallregions<cr>
-nnoremap <leader>c :action commentbylinecomment<cr>
-nnoremap <leader>r :action refactorings.quicklistpopupaction<cr>
-nnoremap <leader>=  :action reformatcode<cr>
-nnoremap <leader>o :action optimizeimports<cr>
-nnoremap <c-r> :action recentfiles<cr>
-nnoremap <leader>l :action recentlocations<cr>
-nnoremap <leader>h  :action localhistory.showhistory<cr>
-nnoremap ge :action gotonexterror<cr>
-nnoremap ge :action gotopreviouserror<cr>
-nnoremap <leader>s :write<cr>
-""" searching and source code navigation
+
+vnoremap <Leader>c :action CommentByLineComment<CR>
+noremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+nnoremap <leader>c :action CommentByLineComment<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>=  :action ReformatCode<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <c-r> :action RecentFiles<CR>
+nnoremap <leader>l :action RecentLocations<CR>
+nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap <leader>s :write<CR>
+""" Searching and Source Code Navigation
+
 set incsearch
-noremap <c-/> :action findinpath<cr>
-nnoremap <c-a> :action gotoaction<cr>
-nnoremap <c-f> :action gotofile<cr>
-nnoremap <leader>u :action findusages<cr>
-nnoremap <leader>s :action gotorelated<cr>
-nnoremap <leader>h :action callhierarchy<cr>
-nnoremap <leader>b :action shownavbar<cr>
-nnoremap <c-s> :action filestructurepopup<cr>
-nnoremap <c-o> :action gotosymbol<cr>
-nnoremap gc :action gotoclass<cr>
-nnoremap gi :action gotoimplementation<cr>
-nnoremap gd :action gottodeclaration<cr>
-nnoremap gp :action gottosupermethod<cr>
-nnoremap gt :action gototest<cr>
-nmap gb <action>(back)
-nmap gf <action>(forward)
-""" tool windows
-nnoremap <c-p> :action jumptolastwindow<cr>
-nnoremap <c-x> :action hideallwindows<cr>
-""" running and debugging
-nnoremap ,r :action contextrun<cr>
-nnoremap ,c :action runclass<cr>
-nnoremap ,f :action chooserunconfiguration<cr>
-nnoremap ,t :action activateruntoolwindow<cr>
-nnoremap ,u :action rerun<cr>
-nnoremap ,f :action rerunfailedtests<cr>
-nnoremap ,b :action togglelinebreakpoint<cr>
-nnoremap ,d :action contextdebug<cr>
-nnoremap ,n :action activatedebugtoolwindow<cr>
+noremap <c-/> :action FindInPath<CR>
+nnoremap <c-a> :action GotoAction<CR>
+nnoremap <c-f> :action GotoFile<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>s :action GotoRelated<CR>
+nnoremap <leader>h :action CallHierarchy<CR>
+nnoremap <leader>b :action ShowNavBar<CR>
+nnoremap <c-s> :action FileStructurePopup<CR>
+nnoremap <c-o> :action GotoSymbol<CR>
+nnoremap gc :action GotoClass<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotToDeclaration<CR>
+nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nmap gb <Action>(Back)
+nmap gf <Action>(Forward)
+""" Tool windows
+nnoremap <c-p> :action JumpToLastWindow<CR>
+nnoremap <c-x> :action HideAllWindows<CR>
+""" Running and Debugging
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,t :action ActivateRunToolWindow<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,f :action RerunFailedTests<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
+nnoremap ,n :action ActivateDebugToolWindow<CR>
+
 
 " whichkey plugin
 set which-key
@@ -127,11 +128,10 @@ set notimeout
 
 nnoremap <leader>si :source ~/.ideavimrc<cr>
 
-map ,lb :action tool_external tools_black<cr>
-map ,li :action tool_external tools_isort<cr>
+map <Leader>lb :action Tool_External Tools_Black<CR>
+map <Leader>li :action Tool_External Tools_Isort<CR>
 
-
-nnoremap ]c :action vcsshownextchangemarker<cr>
-nnoremap [c :action vcsshowprevchangemarker<cr>
-nnoremap <leader>hu :action vcs.rollbackchangedlines<cr>
-nnoremap <leader>hp :action vcs.showhistoryforblock<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap <leader>hu :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>hp :action Vcs.ShowHistoryForBlock<CR>
