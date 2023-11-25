@@ -8,7 +8,6 @@ set scrolloff=5:
 
 set NERDTree
 " do incremental searching.
-remap  q :action CloseContent
 
 set incsearch
 set hlsearch
@@ -17,11 +16,17 @@ set smartcase
 set showmode
 set history=1000
 set surround
+set argtextobj
+set easymotion
+set highlightedyank
+let g:highlightedyank_highlight_duration = "5000"
+let g:highlightedyank_highlight_color = "rgba(57, 62, 65, 255)"
 
 " don't use ex mode, use q for formatting.
 
-:set relativenumber
+
 :set number
+:set relativenumber
 
 let g:WhichKeyDesc_reload_vimrc = "<leader>si Reload config"
 let g:WhichKey_ShowVimActions = "true"
@@ -79,6 +84,12 @@ nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 nnoremap <leader>c :action CommentByLineComment<CR>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+noremap <leader>d :action QuickJavaDoc<CR>
+noremap <leader>e :action ShowErrorDescription<CR>
+map <c-p> :action ParameterInfo<CR>
+
 nnoremap <Leader>=  :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
 nnoremap <c-r> :action RecentFiles<CR>
@@ -101,16 +112,18 @@ nnoremap <c-s> :action FileStructurePopup<CR>
 nnoremap <c-o> :action GotoSymbol<CR>
 nnoremap gc :action GotoClass<CR>
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gd :action GotToDeclaration<CR>
+nnoremap gd :action GotoDeclaration<CR>
 nnoremap gp :action GotToSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nmap gb <Action>(Back)
 nmap gf <Action>(Forward)
 """ Tool windows
-nnoremap <c-p> :action JumpToLastWindow<CR>
+
 nnoremap <c-x> :action HideAllWindows<CR>
 """ Running and Debugging
 nnoremap ,r :action ContextRun<CR>
+vnoremap ,r :action ExecuteInPyConsoleAction<CR>
+
 nnoremap ,c :action RunClass<CR>
 nnoremap ,f :action ChooseRunConfiguration<CR>
 nnoremap ,t :action ActivateRunToolWindow<CR>
@@ -135,3 +148,14 @@ nnoremap ]c :action VcsShowNextChangeMarker<CR>
 nnoremap [c :action VcsShowPrevChangeMarker<CR>
 nnoremap <leader>hu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>hp :action Vcs.ShowHistoryForBlock<CR>
+
+map ci[w [bv]ws
+
+map <c-e> :action EditorSelectWord<CR>
+map <c-s-E> :action EditorUnSelectWord<CR>
+vnoremap p "_dP
+
+noremap <leader>ga :action Git.Add<CR>
+
+map <c-d> <c-d>zz
+map <c-u> <c-u>zz
